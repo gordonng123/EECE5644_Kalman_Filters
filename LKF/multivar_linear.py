@@ -31,8 +31,8 @@ R_LIDAR = np.array([
 H_LIDAR = np.array([
     [1.0, 0.0, 0.0, 0.0],
     [0.0, 1.0, 0.0, 0.0],
-    [0.0, 0.0, 1.0, 0.0],
-    [0.0, 0.0, 0.0, 1.0]])
+    [0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0]])
 f = KalmanFilter(dim_x=4, dim_z=4)
 f.x = x[0]
 f.R = R_LIDAR
@@ -57,8 +57,6 @@ plt.clf
 plt.suptitle("LKF vs true position")
 plt.scatter(x[:,0], x[:,1], c='g')
 plt.scatter(truth[:,0], truth[:,1], c='b', s=5)
-plt.ylim([-20,30])
-plt.xlim([-35,30])
 plt.legend(["LKF results", "true values"])
 plt.show()
 
