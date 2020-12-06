@@ -31,8 +31,8 @@ R_LIDAR = np.array([
 H_LIDAR = np.array([
     [1.0, 0.0, 0.0, 0.0],
     [0.0, 1.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0]])
+    [0.0, 0.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]])
 f = KalmanFilter(dim_x=4, dim_z=4)
 f.x = x[0]
 f.R = R_LIDAR
@@ -57,6 +57,13 @@ plt.clf
 plt.suptitle("LKF vs true position")
 plt.scatter(x[:,0], x[:,1], c='g')
 plt.scatter(truth[:,0], truth[:,1], c='b', s=5)
+plt.legend(["LKF results", "true values"])
+plt.show()
+
+plt.clf
+plt.suptitle("LKF vs true velocity")
+plt.scatter(x[:,2], x[:,3], c='g')
+plt.scatter(truth[:,2], truth[:,3], c='b', s=5)
 plt.legend(["LKF results", "true values"])
 plt.show()
 

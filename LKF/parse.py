@@ -4,6 +4,7 @@ lidar_array = []
 truth_array = []
 prevx = 0
 prevy = 0
+prevtime = 0
 file = open("original_data.txt","r")
 for line in file:
     temp = line.split()
@@ -11,9 +12,10 @@ for line in file:
         time = float(temp[3])
         posx = float(temp[1])
         posy = float(temp[2])
-        lidar_array.append([time, posx, posy, posx-prevx, posy-prevy])
+        lidar_array.append([time, posx, posy, (posx-prevx)/(time-prevtime), (posy-prevy)/(time-prevtime)])
         prevx = posx
         prevy = posy
+        prevtime = time
         tpx = float(temp[4])
         tpy = float(temp[5])
         tvx = float(temp[6])
